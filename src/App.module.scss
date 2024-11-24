@@ -1,3 +1,20 @@
+.githubButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  background-color: #24292e;
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #444d56;
+  }
+}
+
 .autocompleteContainer {
   display: grid;
   gap: 20px;

@@ -34,10 +34,17 @@ const App = () => {
 
   return (
     <div>
-      <h2>Search Options</h2>
+      <a
+        href="https://github.com/BlagovestGerov/search-input"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.githubButton}
+      >
+        View on GitHub
+      </a>
       <div className={styles.autocompleteContainer}>
         <div>
-          <h3>State Search</h3>
+          <h2>State Search</h2>
           <Autocomplete
             data={usStates}
             fetchResults={fetchStateResults}
@@ -46,7 +53,7 @@ const App = () => {
           />
         </div>
         <div>
-          <h3>Github User Search</h3>
+          <h2>Github User Search</h2>
           <Autocomplete
             fetchResults={fetchGitHubUsers}
             numOfResults={numberOfResults}
