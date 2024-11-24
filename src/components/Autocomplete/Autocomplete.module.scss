@@ -1,0 +1,36 @@
+.autocomplete {
+  position: relative;
+  width: 300px;
+
+  .results {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+
+    li {
+      padding: 8px;
+      cursor: pointer;
+
+      &.highlighted {
+        background-color: #f0f0f0;
+      }
+    }
+  }
+
+  .lastSearches {
+    margin-top: 20px;
+
+    h4 {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}

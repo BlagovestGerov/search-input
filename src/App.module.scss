@@ -1,3 +1,10 @@
-.content {
-  text-align: left;
+.autocompleteContainer {
+  display: grid;
+  gap: 20px;
+
+  grid-template-columns: 1fr;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
 }

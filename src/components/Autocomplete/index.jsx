@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./Autocomplete.css";
+import styles from "./Autocomplete.module.scss";
 
 const Autocomplete = ({
   data = [],
@@ -7,38 +7,35 @@ const Autocomplete = ({
   numOfResults = 10,
   onSelect,
 }) => {
-  const [query, setQuery] = useState(""); // User's search input
-  const [results, setResults] = useState([]); // Search results
-  const [selectedIndex, setSelectedIndex] = useState(-1); // Dropdown navigation
-  const [lastSearches, setLastSearches] = useState([]); // History of searches
-  const resultRefs = useRef([]); // For scrolling to results
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [lastSearches, setLastSearches] = useState([]);
+  const resultRefs = useRef([]);
 
-  // Effect to fetch results on query change
   useEffect(() => {
     const fetchData = async () => {
       if (!query.trim()) {
-        setResults([]); // Clear results if query is empty
+        setResults([]);
         return;
       }
 
       try {
         const fetchedResults = await fetchResults(query, numOfResults);
-        setResults(fetchedResults); // Update results
+        setResults(fetchedResults);
       } catch (error) {
         console.error("Error fetching results:", error);
-        setResults([]); // Clear results on error
+        setResults([]);
       }
     };
 
     fetchData();
   }, [query, fetchResults, numOfResults]);
 
-  // Handle user selection
   const handleSelect = (value, text) => {
-    setQuery(text); // Set query to the selected text
-    setResults([]); // Clear results
+    setQuery(text);
+    setResults([]);
 
-    // Update last searches, keeping it unique and limiting to 10
     setLastSearches((prev) => {
       const updatedHistory = [text, ...prev.filter((item) => item !== text)];
       return updatedHistory.slice(0, 10);
@@ -47,7 +44,6 @@ const Autocomplete = ({
     if (onSelect) onSelect(value);
   };
 
-  // Handle keyboard navigation
   const handleKeyDown = (e) => {
     if (e.key === "ArrowDown") {
       setSelectedIndex((prev) => {
@@ -67,7 +63,6 @@ const Autocomplete = ({
     }
   };
 
-  // Scroll to a specific result in the dropdown
   const scrollToResult = (index) => {
     if (resultRefs.current[index]) {
       resultRefs.current[index].scrollIntoView({
@@ -78,7 +73,7 @@ const Autocomplete = ({
   };
 
   return (
-    <div className="autocomplete">
+    <div className={styles.autocomplete}>
       <input
         type="search"
         value={query}
@@ -86,19 +81,19 @@ const Autocomplete = ({
         onKeyDown={handleKeyDown}
         placeholder="Type to search..."
       />
-      <ul className="results">
+      <ul className={styles.results}>
         {results.map((result, index) => (
           <li
             key={result.value}
             ref={(el) => (resultRefs.current[index] = el)}
-            className={index === selectedIndex ? "highlighted" : ""}
+            className={index === selectedIndex ? styles.highlighted : ""}
             onClick={() => handleSelect(result.value, result.text)}
           >
             {result.text}
           </li>
         ))}
       </ul>
-      <div className="last-searches">
+      <div className={styles.lastSearches}>
         <h4>Last Searches</h4>
         <ul>
           {lastSearches.map((search, idx) => (
