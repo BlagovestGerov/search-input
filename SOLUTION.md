@@ -98,18 +98,3 @@ The implementation adheres to React best practices, and the resulting components
 
 11. **E2E Testing**:
     - Use Cypress or Playwright for end-to-end testing to validate complete user flows.
-
----
-
-## Challenges Encountered
-
-1. **Integration of API-Based Search**:
-
-   - Handling edge cases such as API rate limits and network errors.
-
-2. **Dynamic and Static Data Support**:
-
-   - Ensuring both static and HTTP-based data sources work seamlessly within the same component.
-
-3. **Responsive Design**:
-   - Balancing usability across different screen sizes.
