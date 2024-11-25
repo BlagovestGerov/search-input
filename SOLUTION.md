@@ -55,14 +55,18 @@ The implementation adheres to React best practices, and the resulting components
 
 ### Suggested Future Improvements
 
-1. **Persistent Search History**:
+1. **Integrate Last Searches into the Dropdown**:
+
+   - Last searches will appear above the fetched results in the dropdown.
+   - Clicking on a last search will immediately trigger a new search for the selected query.
+   - Add functionality to delete individual or all search history items.
+
+2. **Persistent Search History**:
 
    - Save search history for logged-in users, ensuring it persists across sessions.
    - Use localStorage or backend storage to maintain consistency.
-
-2. **Search History Management**:
-
-   - Add functionality to delete individual or all search history items.
+   - Integrate Clerk for easy user authentication and session management.
+   - When users log in, fetch their saved searches and sync them with the dropdown suggestions.
 
 3. **Debounce Implementation**:
 
